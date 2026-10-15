@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タップで色変更</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    body {
+      background-color: white;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    body.green {
+      background-color: #00B050;
+    }
+    body.blue {
+      background-color: #0070C0;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    let state = 0;
+    document.body.addEventListener("click", function () {
+      state = (state + 1) % 3;
+      document.body.classList.remove("green", "blue");
+      if (state === 1) {
+        document.body.classList.add("green");
+      } else if (state === 2) {
+        document.body.classList.add("blue");
+      }
+    });
+  </script>
+</body>
+</html>
